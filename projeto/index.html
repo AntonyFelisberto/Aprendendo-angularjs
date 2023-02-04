@@ -22,7 +22,8 @@
           <div class="form-row mb-2">
 
             <div class="col">
-              <label class="col-form-label text-right" for="searchQuery">search {{"for: " + query }}</label>
+              <!--ng-show,ng-if,ng-hide Só EXECUTAM CASO A CONDIÇÃO SEJA VERDADEIRA-->
+              <label class="col-form-label text-right" for="searchQuery">search <span ng-show="query">{{"for: " + query }}</span></label>
             </div>
             
             <div class="col-12">
@@ -34,6 +35,28 @@
       </div>
     </div>
   </div>
+
+  <div class="artist-list container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-9 col-md-7 col-lg-5">
+        <ul class=" list-group d-flex" ng-if="query">
+          <li class="list-group-item" ng-repeat="artista in artistas">
+  
+              <div class="media d-flex align-items-center">
+                <!-- QUANDO ESTA USANDO ARQUIVOS E TEM QUE UNIR COM PROPRIEDADES DO ANGULAR É NECESSARIO USAR O ng-src -->
+                <img class="rounded-circle mr-3" ng-src="images/{{artista.shortname}}_tn.jpg" alt="Photo of {{artista.name}}">
+                <div class="media-body">
+                  <h5 class="my-0 text-dark">{{artista.name | uppercase }}</h5>
+                  <div class="text-secondary font-italic">{{artista.reknown | lowercase }}</div>
+                </div>
+              </div>
+  
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
 
   <script src="lib/jquery/jquery.min.js"></script>
   <script src="lib/bootstrap/popper.min.js"></script>
