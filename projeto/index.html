@@ -40,8 +40,7 @@
     <div class="row justify-content-center">
       <div class="col-12 col-sm-9 col-md-7 col-lg-5">
         <ul class=" list-group d-flex" ng-if="query">
-          <li class="list-group-item" ng-repeat="artista in artistas">
-  
+          <li class="list-group-item" ng-repeat="artista in artistas | filter:query |orderBy:'name'">
               <div class="media d-flex align-items-center">
                 <!-- QUANDO ESTA USANDO ARQUIVOS E TEM QUE UNIR COM PROPRIEDADES DO ANGULAR É NECESSARIO USAR O ng-src -->
                 <img class="rounded-circle mr-3" ng-src="images/{{artista.shortname}}_tn.jpg" alt="Photo of {{artista.name}}">
@@ -50,7 +49,6 @@
                   <div class="text-secondary font-italic">{{artista.reknown | lowercase }}</div>
                 </div>
               </div>
-  
           </li>
         </ul>
       </div>
@@ -64,3 +62,22 @@
 
 </body>
 </html>
+
+<!-- FILTRO PARA O NG REPEAT
+    NORMAL
+<li class="list-group-item" ng-repeat="artista in artistas">
+    ng-repeat com filters LIMITANDO OS NUMEROS DE ITENS QUE APARECE
+<li class="list-group-item" ng-repeat="artista in artistas | limitTo:4">
+    ng-repeat com filters LIMITANDO OS NUMEROS DE ITENS QUE APARECE COMEÇANDO A MOSTRAR A PARTIR DO 2
+<li class="list-group-item" ng-repeat="artista in artistas | limitTo:4:2">
+    ng-repeat com filters LIMITANDO OS NUMEROS DE ITENS QUE APARECE COMEÇANDO A MOSTRAR A PARTIR DO ITEM DE TRAS PARA FRENTE
+<li class="list-group-item" ng-repeat="artista in artistas | limitTo:4:-2">
+    ng-repeat com filters LIMITANDO A APARECER SOMENTE OS ITENS QUE SÃO PARECIDOS COM VALOR DA VARIAVEL 
+<li class="list-group-item" ng-repeat="artista in artistas | filter:query">
+    ng-repeat com filters ORDENANDO OS DADOS POR ATRIBUTO QUE EXISTE NO ARRAY
+<li class="list-group-item" ng-repeat="artista in artistas | orderBy:'name'">
+    ng-repeat com filters ORDENANDO OS DADOS POR ATRIBUTO QUE EXISTE NO ARRAY E VAI MOSTRAR EM ORDEM REVERSA
+<li class="list-group-item" ng-repeat="artista in artistas | orderBy:'name':'reverse'">
+    É POSSIVEL COLOCAR MAIS DE UM FILTRO USANDO |
+<li class="list-group-item" ng-repeat="artista in artistas | filter:query |orderBy:'name'">
+-->
