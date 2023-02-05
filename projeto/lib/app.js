@@ -7,7 +7,8 @@ app.config(["$routeProvider",function($routeProvider){
             templateUrl:"paginas/pesquisas.html",
             controller:"SearchController"
         })
-        .when('/details',{
+        //pagina:valorNoLink, PARA ADICIONAR MAIS DE UM COLOCAR pagina/:valorNoLink/:outro/:outro...
+        .when('/details/:itemId',{
             templateUrl:"paginas/detalhe.html",
             controller:"DetailsController"
         })
